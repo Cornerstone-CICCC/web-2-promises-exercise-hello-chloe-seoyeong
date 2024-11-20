@@ -24,3 +24,16 @@ fs.readFile('firstname.txt', 'utf-8')
   })
 
 // ASYNC/AWAIT SOLUTION BELOW THIS LINE
+const introduce = async () => {
+  try {
+    const aFirstname = await fs.readFile('firstname.txt', 'utf-8');
+    const aLastname = await fs.readFile('lastname.txt', 'utf-8');
+    const aAge = await fs.readFile('age.txt', 'utf-8');
+    let aHobbies = JSON.parse(await fs.readFile('hobbies.txt', 'utf-8'));
+
+    console.log(`${aFirstname} ${aLastname} is ${aAge} years old and his hobbies are ${aHobbies[0]} and ${aHobbies[1]}.`);
+  } catch(err) {
+    console.error(`ASYNC-AWAIT Error: ${err}`);
+  }
+}
+introduce();
